@@ -20,7 +20,43 @@ const App = () => {
     setQrColor("#000000");
     setBgColor("#ffffff");
   };
-  console.log(src);
+
+  const [imageUrl, setImageUrl] = useState(null);
+
+  const downloadImage = (imageUrl) => {
+    fetch(imageUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        // Create a temporary anchor element
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+
+        // Extract the filename from the URL
+        // const filename = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
+        const filename = Date.now();
+
+        // Set the download attribute and filename
+        link.setAttribute("download", filename);
+        document.body.appendChild(link);
+
+        // Simulate a click on the anchor element to start the download
+        link.click();
+
+        // Clean up the temporary anchor element
+        link.parentNode.removeChild(link);
+
+        // Set the downloaded image URL to display on the page
+        setImageUrl(url);
+      })
+      .catch((error) => {
+        console.error("Error downloading image:", error);
+      });
+  };
+
+  const handleDownload = () => {
+    downloadImage(src);
+  };
 
   return (
     <div className='input container'>
@@ -58,8 +94,8 @@ const App = () => {
               value={format}
               onChange={(e) => setFormat(e.target.value)}
             >
-              <option value='jpg'>JPG</option>
               <option value='png'>PNG</option>
+              <option value='jpeg'>JPG</option>
               <option value='gif'>GIF</option>
               <option value='svg'>SVG</option>
             </select>
@@ -96,20 +132,20 @@ const App = () => {
                 src={src}
                 alt=''
               />
-              <div className='form-grp'>
-                <a
-                  href={src}
-                  className='button link'
-                  target='_blank'
-                  download
-                >
-                  Download
-                </a>
-              </div>
             </>
           )}
         </div>
       </form>
+      {src && (
+        <div className='form-grp'>
+          <button
+            className='button link'
+            onClick={handleDownload}
+          >
+            Download Image
+          </button>
+        </div>
+      )}
     </div>
   );
 };
