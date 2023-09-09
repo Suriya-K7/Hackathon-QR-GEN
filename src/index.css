@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Wallpoet&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #2c3e50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.head {
+  text-align: center;
+  font-weight: 600;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: cyan;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #2d2d2d;
+}
+.container {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px;
+  font-weight: 500;
+}
+.form-grp {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  gap: 5px;
+}
+input[type="url"],
+select {
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  border-radius: 1px solid rgba(128, 128, 128, 0.65);
+  padding: 5px 10px;
+}
+.button {
+  height: 30px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.button:hover,
+#button-save:hover {
+  transform: scale(1.2);
+  background-color: #e74c3c;
+  color: white;
+}
+.button:active,
+#button-save:active {
+  transform: scale(1.2);
+  background-color: green;
+}
+input[type="color"] {
+  display: block;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  border-radius: 1px solid rgba(128, 128, 128, 0.65);
+  width: 100%;
+}
+.link {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  background-color: white;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+}
+.qrcode {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.qrcode button {
+  width: 200px;
+}
